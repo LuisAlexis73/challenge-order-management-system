@@ -105,7 +105,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           <button
             onClick={goToFirstPage}
             disabled={!hasPrev}
-            className={`p-2 rounded-lg transition-all duration-200 ${
+            className={`p-2 rounded-lg transition-all duration-200 cursor-pointer ${
               !hasPrev
                 ? "text-gray-400 cursor-not-allowed bg-gray-100"
                 : "text-gray-700 hover:bg-blue-50 hover:text-blue-600 bg-white border border-gray-200 hover:border-blue-200"
@@ -131,7 +131,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           <button
             onClick={goToPrevPage}
             disabled={!hasPrev}
-            className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+            className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 cursor-pointer ${
               !hasPrev
                 ? "text-gray-400 cursor-not-allowed bg-gray-100"
                 : "text-gray-700 hover:bg-blue-50 hover:text-blue-600 bg-white border border-gray-200 hover:border-blue-200"

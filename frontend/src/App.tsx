@@ -16,7 +16,14 @@ import "./index.css";
 type ViewMode = "list" | "create" | "edit" | "details";
 
 function App() {
-  const { createOrder, updateOrder, deleteOrder, loading } = useOrders();
+  const {
+    createOrder,
+    updateOrder,
+    deleteOrder,
+    loading,
+    fetchOrders,
+    orders,
+  } = useOrders();
   const { notification, hideNotification, showSuccess, showError } =
     useNotification();
   const [viewMode, setViewMode] = useState<ViewMode>("list");
@@ -55,6 +62,7 @@ function App() {
       showSuccess(
         `Order created successfully for ${newOrder.customer_name}! 🎉`,
       );
+      await fetchOrders();
       handleCloseModal();
     } catch (error) {
       showError("Failed to create order. Please try again.");
@@ -71,6 +79,7 @@ function App() {
       showSuccess(
         `Order updated successfully for ${updatedOrder.customer_name}! ✅`,
       );
+      await fetchOrders();
       handleCloseModal();
     } catch (error) {
       showError("Failed to update order. Please try again.");
@@ -83,6 +92,7 @@ function App() {
     try {
       await deleteOrder(orderId);
       showSuccess("Order deleted successfully! 🗑️");
+      await fetchOrders();
       handleCloseModal();
     } catch (error) {
       showError("Failed to delete order. Please try again.");
@@ -181,8 +191,9 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <OrderList
+          orders={orders}
           onOrderSelect={handleViewOrder}
           onEditOrder={handleEditOrder}
         />

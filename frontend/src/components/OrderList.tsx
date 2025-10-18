@@ -5,25 +5,20 @@ import { Pagination } from "./Pagination";
 import { Loading } from "./Loading";
 
 interface OrderListProps {
+  orders: Order[];
   onOrderSelect?: (order: Order) => void;
   onEditOrder?: (order: Order) => void;
 }
 
 export const OrderList: React.FC<OrderListProps> = ({
+  orders,
   onOrderSelect,
   onEditOrder,
 }) => {
-  const {
-    orders,
-    pagination,
-    loading,
-    error,
-    fetchOrders,
-    deleteOrder,
-    clearError,
-  } = useOrders();
+  const { pagination, loading, error, fetchOrders, deleteOrder, clearError } =
+    useOrders();
   const [statusFilter, setStatusFilter] = useState<OrderStatus | "">("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [, setCurrentPage] = useState(1);
 
   const handleStatusFilter = async (status: OrderStatus | "") => {
     setStatusFilter(status);
