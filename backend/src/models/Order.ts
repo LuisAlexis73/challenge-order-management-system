@@ -1,4 +1,4 @@
-import { OrderStatus } from "../types/index";
+import { OrderStatus } from "../types/order";
 
 export class Order {
   public id: string;
