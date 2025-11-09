@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "module": "CommonJS",
+    "baseUrl": "./src",
+    "paths": {
+      "@controllers/*": ["controllers/*"],
+      "@services/*": ["services/*"],
+      "@repositories/*": ["repositories/*"],
+      "@models/*": ["models/*"],
+      "@routes/*": ["routes/*"],
+      "@config/*": ["config/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@types/*": ["types/*"]
+    },
+    "typeRoots": ["./node_modules/@types"],
+    "resolveJsonModule": true,
+    "declaration": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "tests"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}
